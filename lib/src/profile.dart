@@ -18,6 +18,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final TextEditingController _phoneController = TextEditingController();
   File? _image;
   final picker = ImagePicker();
+  bool _isEditingName = false;
+  bool _isEditingPhone = false;
 
   @override
   void initState() {
@@ -104,38 +106,52 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               SizedBox(height: 16),
-              TextField(
-                controller: _nameController,
-                decoration: InputDecoration(
-                  labelText: 'Name',
-                  border: OutlineInputBorder(),
-                ),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: _nameController,
+                      decoration: InputDecoration(
+                        labelText: 'Name',
+                        border: OutlineInputBorder(),
+                        enabled: _isEditingName,
+                      ),
+                      readOnly: !_isEditingName,
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(_isEditingName ? Icons.check : Icons.edit),
+                    onPressed: () {
+                      setState(() {
+                        _isEditingName = !_isEditingName;
+                      });
+                    },
+                  ),
+                ],
               ),
               SizedBox(height: 16),
-              TextField(
-                controller: _phoneController,
-                decoration: InputDecoration(
-                  labelText: 'Phone Number',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: _saveProfile,
-                child: Text(
-                  'Save',
-                  style:  GoogleFonts.genos(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
-                ),
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)
+              Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: _phoneController,
+                      decoration: InputDecoration(
+                        labelText: 'Phone Number',
+                        border: OutlineInputBorder(),
+                        enabled: _isEditingPhone,
+                      ),
+                      readOnly: !_isEditingPhone,
+                    ),
                   ),
-                  backgroundColor: Theme.of(context).colorScheme.primary
-                ),
+                  IconButton(
+                    icon: Icon(_isEditingPhone ? Icons.check : Icons.edit),
+                    onPressed: () {
+                      setState(() {
+                        _isEditingPhone = !_isEditingPhone;
+                      });
+                    },
+                  ),
+                ],
               ),
             ],
           ),

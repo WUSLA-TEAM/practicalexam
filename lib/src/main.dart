@@ -34,33 +34,39 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      bottomNavigationBar: BottomAppBar(
-        color: Theme.of(context).colorScheme.primary,
-        shape: CircularNotchedRectangle(
-        ),
-        notchMargin: 8.0,
-        child: BottomNavigationBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.list),
-              label: 'Products',
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(30.0),
+          child: BottomAppBar(
+            color: Theme.of(context).colorScheme.tertiary,
+            shape: CircularNotchedRectangle(),
+            notchMargin: 8.0,
+            child: BottomNavigationBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.list),
+                  label: 'Products',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person),
+                  label: 'Profile',
+                ),
+              ],
+              currentIndex: _selectedIndex,
+              selectedItemColor: Theme.of(context).colorScheme.primary,
+              unselectedItemColor: Theme.of(context).colorScheme.onPrimary,
+              onTap: _onItemTapped,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Theme.of(context).colorScheme.tertiary,
-          unselectedItemColor: Theme.of(context).colorScheme.onPrimary,
-          onTap: _onItemTapped,
+          ),
         ),
-      ),
+      )
     );
   }
 }
