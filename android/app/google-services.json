@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "863732232076",
+    "project_id": "flutterexam-5c5fe",
+    "storage_bucket": "flutterexam-5c5fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:863732232076:android:a56f11aa71f8336771f0a9",
+        "android_client_info": {
+          "package_name": "com.wusla.e_commerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfNdOX256y7kqiNbowOnGz9uz-ykxcsK0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
